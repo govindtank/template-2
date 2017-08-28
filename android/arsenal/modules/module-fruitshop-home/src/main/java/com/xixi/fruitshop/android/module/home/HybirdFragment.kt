@@ -2,8 +2,6 @@ package com.xixi.fruitshop.android.module.home
 
 import android.graphics.Color
 import android.os.Bundle
-import android.taobao.atlas.framework.Atlas
-import android.taobao.atlas.framework.BundleInstaller
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +10,6 @@ import android.widget.TextView
 import com.xixi.library.android.base.FSBaseFragment
 import com.xixi.library.android.util.FSLogUtil
 import com.xixi.library.android.util.FSRouteManager
-import com.xixi.library.android.util.FSToastUtil
 
 class HybirdFragment : FSBaseFragment() {
 

@@ -5,7 +5,7 @@ buildscript {
     ext.greendaoVersion = "3.2.0"
     ext.walleVersion = "1.1.4"
 
-    ext.atlasPluginVersion = "2.3.3.rc1"
+    ext.repluginVersion = "2.2.0"
     ext.atlasCoreVersion = "5.0.7.30"
     ext.atlasUpdateVersion = "1.1.4.10-rc1"
 
@@ -15,7 +15,8 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.taobao.android:atlasplugin:$atlasPluginVersion"
+        classpath "com.qihoo360.replugin:replugin-host-gradle:$repluginVersion"
+        classpath "com.qihoo360.replugin:replugin-plugin-gradle:$repluginVersion"
         classpath "com.meituan.android.walle:plugin:$walleVersion"
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlinVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"

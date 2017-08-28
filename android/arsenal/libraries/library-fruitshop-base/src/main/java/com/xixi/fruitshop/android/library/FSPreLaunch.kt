@@ -1,3 +1,4 @@
+/*
 package com.xixi.fruitshop.android.library
 
 import android.content.Context
@@ -9,3 +10,4 @@ class FSPreLaunch : AtlasPreLauncher {
         Log.w("FSPreLaunch", "FSPreLaunch:initBeforeAtlas")
     }
 }
+*/

@@ -1,28 +1,36 @@
-apply plugin: "com.android.library"
-apply plugin: "com.taobao.atlas"
+apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
 apply plugin: 'kotlin-android-extensions'
 
 group = 'com.fruitshop'
 version = '1.0.0'
 
-atlas {
-    bundleConfig {
-        awbBundle true
-    }
-}
 android {
     compileSdkVersion = rootProject.ext.compileSdkVersion
     buildToolsVersion = rootProject.ext.buildToolsVersion
     defaultConfig {
+        applicationId "com.xixi.fruitshop.android.module.setting"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
     }
     resourcePrefix "setting_"
 }
 
+apply plugin: 'replugin-plugin-gradle'
 dependencies {
     compile fileTree(dir: "libs", include: ["*.jar"])
+    compile "com.qihoo360.replugin:replugin-plugin-lib:$rootProject.ext.repluginVersion"
+    compile project(':library-fruitshop-base')
+}
 
-    providedCompile project(':library-fruitshop-base')
+// 这个plugin需要放在android配置之后，因为需要读取android中的配置项
+apply plugin: 'replugin-plugin-gradle'
+repluginPluginConfig {
+
+    //插件名
+    pluginName = "setting"
+    //宿主app的包名
+    hostApplicationId = "com.xixi.fruitshop.android"
+    //宿主app的启动activity
+    hostAppLauncherActivity = "com.xixi.fruitshop.android.module.tab.HomeTabActivity"
 }

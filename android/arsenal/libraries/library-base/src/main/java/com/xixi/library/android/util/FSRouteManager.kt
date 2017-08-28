@@ -3,19 +3,10 @@ package com.xixi.library.android.util
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.taobao.atlas.bundleInfo.AtlasBundleInfoManager
-import android.taobao.atlas.framework.Atlas
-import android.taobao.atlas.framework.BundleImpl
-import android.taobao.atlas.runtime.ActivityTaskMgr
-import android.taobao.atlas.runtime.BundleUtil
-import android.taobao.atlas.runtime.RuntimeVariables
 import android.text.TextUtils
 import com.xixi.library.android.base.FSActivity
-import org.osgi.framework.BundleException
-import java.io.File
 import java.util.*
 import java.util.concurrent.ConcurrentHashMap
 
@@ -67,7 +58,7 @@ object FSRouteManager {
     @JvmOverloads
     @Synchronized
     fun goToFragment(activity: Activity?, fragmentName: String?, bundle: Bundle? = null, callback: ((bundle: Bundle?) -> Unit?)? = null) {
-        if (activity == null || activity.isFinishing || fragmentName == null || TextUtils.isEmpty(fragmentName)) {
+        /*if (activity == null || activity.isFinishing || fragmentName == null || TextUtils.isEmpty(fragmentName)) {
             FSLogUtil.e("goToFragment failed, activity or fragmentName is invalid !")
             if (callback != null)
                 callback(null)
@@ -149,7 +140,7 @@ object FSRouteManager {
             }
         } else {
             goToFragmentInternal(activity, fragmentName, bundle, callback)
-        }
+        }*/
     }
 
     private fun goToFragmentInternal(activity: Activity?, fragmentName: String?, bundle: Bundle? = null, callback: ((bundle: Bundle?) -> Unit?)? = null) {
@@ -163,7 +154,7 @@ object FSRouteManager {
         FSActivity.start(activity, fragmentName, _bundle)
     }
 
-    fun AtlasBundleInfoManager.getUninstallBundles(): List<String> {
+    /*fun AtlasBundleInfoManager.getUninstallBundles(): List<String> {
         val installedBundles: List<String> = Atlas.getInstance().bundles.flatMap { listOf(it.location) }
         val allBundles: List<String> = AtlasBundleInfoManager.instance().bundleInfo.bundles.keys.toList()
         allBundles.forEach { FSLogUtil.d("allBundles: $it : isInternalBundle=" + AtlasBundleInfoManager.instance().isInternalBundle(it)) }
@@ -173,7 +164,7 @@ object FSRouteManager {
         FSLogUtil.v("installedBundles:" + installedBundles)
         allBundles.forEach { FSLogUtil.d("allBundles: $it :" + AtlasBundleInfoManager.instance().isInternalBundle(it)) }
         return uninstallBundles
-    }
+    }*/
 
     @Synchronized
     fun getCallback(fragment: Fragment?): ((bundle: Bundle?) -> Unit?)? = callbackMap[fragment?.arguments?.getString(KEY_ID_CALLBACK)]

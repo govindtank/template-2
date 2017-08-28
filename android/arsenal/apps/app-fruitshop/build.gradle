@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.taobao.atlas'
 apply plugin: "kotlin-android"
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'walle'
@@ -8,21 +7,6 @@ walle {
     apkOutputFolder = new File("${buildDir}/outputs/channels");// 指定渠道包的输出路径
     apkFileNameFormat = '${appName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk';// 定制渠道包的APK的文件名称
     channelFile = new File("${projectDir}/channels.txt")// 渠道配置文件
-}
-
-atlas {
-    atlasEnabled true
-    tBuildConfig {
-        autoStartBundles = [
-                'com.xixi.fruitshop.android.module.setting',
-                //'com.xixi.fruitshop.android.module.mine',
-        ]
-        autoPackageId = true
-        outOfApkBundles = [
-                'module-fruitshop-hybird', //adb push arsenal/apps/app-fruitshop/build/outputs/remote-bundles-debug/libcom_xixi_fruitshop_android_module_hybird.so /sdcard/Android/data/com.xixi.fruitshop.android/cache/
-        ]
-        preLaunch = 'com.xixi.fruitshop.android.library.FSPreLaunch' //initBeforeAtlas
-    }
 }
 
 //上传bugly符号表配置
@@ -193,6 +177,30 @@ android {
     }
 }
 
+// ATTENTION!!! Must be PLACED AFTER "android{}" to read the applicationId
+apply plugin: 'replugin-host-gradle'
+
+/**
+ * 配置项均为可选配置，默认无需添加
+ * 更多可选配置项参见replugin-host-gradle的RepluginConfig类
+ * 可更改配置项参见 自动生成RePluginHostConfig.java
+ */
+repluginHostConfig {
+    /**
+     * 是否使用 AppCompat 库
+     * 不需要个性化配置时，无需添加
+     */
+    useAppCompat = true
+    /**
+     * 背景不透明的坑的数量
+     * 不需要个性化配置时，无需添加
+     */
+    countNotTranslucentStandard = 6
+    countNotTranslucentSingleTop = 2
+    countNotTranslucentSingleTask = 3
+    countNotTranslucentSingleInstance = 2
+}
+
 /**
  * compile          :   常规的打包配置，会将依赖代码打入到dex中去
  * bundleCompile    :   bundle中的代码不会打入dex中去，bundle将以libxxx.so文件的形式，放在apk的lib目录下，随包发布
@@ -201,11 +209,13 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
+
+
     compile project(':library-fruitshop-base')
     compile project(':module-fruitshop-home')
-    bundleCompile project(':module-fruitshop-hybird')
-    bundleCompile project(':module-fruitshop-mine')
-    bundleCompile project(':module-fruitshop-setting')
+//    bundleCompile project(':module-fruitshop-hybird')
+//    bundleCompile project(':module-fruitshop-mine')
+//    bundleCompile project(':module-fruitshop-setting')
 
     // LeakCanary
     debugCompile "com.squareup.leakcanary:leakcanary-android:$rootProject.ext.leakcanaryVersion"

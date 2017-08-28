@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.taobao.atlas.framework.Atlas
 import android.util.Log
 import android.widget.FrameLayout
 import com.xixi.library.android.util.FSLogUtil
@@ -151,8 +150,8 @@ open class FSActivity : FSBaseActivity() {
                     fragment = Class.forName(fragmentObject).newInstance() as Fragment
                 } catch (_: Exception) {
                     try {
-                        @Suppress("DEPRECATION")
-                        fragment = Atlas.getInstance().delegateClassLoader.loadClass(fragmentObject).newInstance() as Fragment
+                        //@Suppress("DEPRECATION")
+                        //fragment = Atlas.getInstance().delegateClassLoader.loadClass(fragmentObject).newInstance() as Fragment
                     } catch (e: Exception) {
                         FSLogUtil.e("ClassNotFoundException:$fragmentClassName", e)
                     }
