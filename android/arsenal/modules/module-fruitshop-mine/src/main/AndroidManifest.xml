@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.xixi.fruitshop.android.module.mine"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.xixi.fruitshop.android.module.mine">
 
-    <application android:name=".MineApplication"/>
+    <application
+        android:name=".MineApplication"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning,MissingApplicationIcon"/>
 
 </manifest>

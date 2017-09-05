@@ -20,7 +20,7 @@ apply plugin: 'replugin-plugin-gradle'
 dependencies {
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.qihoo360.replugin:replugin-plugin-lib:$rootProject.ext.repluginVersion"
-    compile project(':library-fruitshop-base')
+    provided project(':library-fruitshop-base')
 }
 
 // 这个plugin需要放在android配置之后，因为需要读取android中的配置项

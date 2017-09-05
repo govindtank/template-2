@@ -8,7 +8,5 @@ import com.xixi.library.android.base.FSBaseFragment
 
 class MineFragment : FSBaseFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(R.layout.mine_fragment, container, false)
-    }
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? = inflater?.inflate(R.layout.mine_fragment, container, false)
 }

@@ -7,9 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.qihoo360.replugin.RePlugin
 import com.xixi.library.android.base.FSBaseFragment
-import com.xixi.library.android.util.FSLogUtil
-import com.xixi.library.android.util.FSRouteManager
 
 class HybirdFragment : FSBaseFragment() {
 
@@ -18,9 +17,11 @@ class HybirdFragment : FSBaseFragment() {
         textView.text = "hybird"
         textView.setBackgroundColor(Color.parseColor("#FF33B5E5"))
         textView.setOnClickListener {
-            FSRouteManager.goToFragment(activity, "com.xixi.fruitshop.android.module.hybird.HybirdFragment") {
+            /*FSRouteManager.goToFragment(activity, "com.xixi.fruitshop.android.module.hybird.HybirdFragment") {
                 FSLogUtil.w("krmao", it.toString())
-            }
+            }*/
+            // 刻意以“包名”来打开
+            RePlugin.startActivity(context, RePlugin.createIntent("com.xixi.fruitshop.android.module.hybird", "com.qihoo360.replugin.sample.demo1.MainActivity"));
         }
         return textView
     }
