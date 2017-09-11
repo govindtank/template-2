@@ -5,9 +5,9 @@ buildscript {
     ext.greendaoVersion = "3.2.0"
     ext.walleVersion = "1.1.4"
 
-    ext.atlasPluginVersion = "2.3.3.rc1"
-    ext.atlasCoreVersion = "5.0.7.30"
-    ext.atlasUpdateVersion = "1.1.4.10-rc1"
+    ext.atlasPluginVersion = "2.3.3.rc12"
+    ext.atlasCoreVersion = "5.0.7.42"
+    ext.atlasUpdateVersion = "1.1.4.11"
 
     repositories {
         jcenter()
